@@ -13,6 +13,7 @@ export default class Stage2Inner extends Phaser.Scene
   {
       this.load.image('sti2', sti2);
       this.load.image('bt_sti2', bt_sti2);
+      this.load.image('ipfs', 'https://bafkreia6xk7nzgnzolrci7vln6z5k72j4kpmht4ec7urwe6g2kk3aujcry.ipfs.dweb.link');
   }
 
   create ()
@@ -35,6 +36,8 @@ export default class Stage2Inner extends Phaser.Scene
       color: 'black',
       fontFamily: 'GROBOLD'
     }).setWordWrapWidth(900);
+
+    const ipfs = this.add.image(190, 500, 'ipfs');
 
     bt_sti_1.on('pointerdown', (pointer) => {
       alert('opt1');

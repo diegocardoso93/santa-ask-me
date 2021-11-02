@@ -5,17 +5,17 @@ import bt_instructions from './assets/bt_instructions.png';
 import st1_small from './assets/st1_small.png';
 import st2_small from './assets/st2_small.png';
 import bt_back from './assets/bt_back.png';
-import StageSelect from './StageSelect';
-import Stage1 from './stage1';
+import Stage1 from './Stage1';
 import Stage2 from './stage2';
 import Stage1Inner from './Stage1Inner';
 import Stage2Inner from './Stage2Inner';
+import Stage1Finish from './Stage1Finish';
 
 class SantaAskMe extends Phaser.Scene
 {
   constructor ()
   {
-      super();
+      super('SantaAskMe');
       this.countTimeHead = 0;
   }
 
@@ -97,7 +97,7 @@ const config = {
   type: Phaser.AUTO,
   width: 1024,
   height: 700,
-  scene: [SantaAskMe, StageSelect, Stage1, Stage2, Stage1Inner, Stage2Inner],
+  scene: [SantaAskMe, Stage1, Stage2, Stage1Inner, Stage2Inner, Stage1Finish],
   backgroundColor: '#ffffff'
 };
 
