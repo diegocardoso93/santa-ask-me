@@ -9,29 +9,28 @@ import Stage1 from './Stage1';
 import Stage2 from './stage2';
 import Stage1Inner from './Stage1Inner';
 import Stage2Inner from './Stage2Inner';
-import Stage1Finish from './Stage1Finish';
+import StageFinish from './StageFinish';
 
 class SantaAskMe extends Phaser.Scene
 {
   constructor ()
   {
-      super('SantaAskMe');
-      this.countTimeHead = 0;
+    super('SantaAskMe');
   }
 
   preload ()
   {
-      this.load.image('sc1', sc1);
-      this.load.image('bt_play', bt_play);
-      this.load.image('bt_instructions', bt_instructions);
-      this.load.image('st1_small', st1_small);
-      this.load.image('st2_small', st2_small);
-      this.load.image('bt_back', bt_back);
+    this.load.image('sc1', sc1);
+    this.load.image('bt_play', bt_play);
+    this.load.image('bt_instructions', bt_instructions);
+    this.load.image('st1_small', st1_small);
+    this.load.image('st2_small', st2_small);
+    this.load.image('bt_back', bt_back);
   }
 
   create ()
   {
-    const sc1 = this.add.image(512, 350, 'sc1');
+    this.add.image(512, 350, 'sc1');
     const bt_play = this.add.image(512, 574, 'bt_play').setInteractive();
     const bt_instructions = this.add.image(212, 526, 'bt_instructions').setInteractive();
     const st1_small = this.add.image(512, 535, 'st1_small').setInteractive().setVisible(false);
@@ -87,17 +86,13 @@ class SantaAskMe extends Phaser.Scene
       this.scene.start('Stage2');
     });
   }
-
-  update(time, delta)
-  {
-  }
 }
 
 const config = {
   type: Phaser.AUTO,
   width: 1024,
   height: 700,
-  scene: [SantaAskMe, Stage1, Stage2, Stage1Inner, Stage2Inner, Stage1Finish],
+  scene: [SantaAskMe, Stage1, Stage2, Stage1Inner, Stage2Inner, StageFinish],
   backgroundColor: '#ffffff'
 };
 

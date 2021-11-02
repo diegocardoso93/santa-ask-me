@@ -4,112 +4,53 @@ import santa1 from './assets/santa1.png';
 import santaface from './assets/santaface.png';
 import door from './assets/door.png';
 import bt_back from './assets/bt_back.png';
-
-function apiGetQuiz() {
-  const quiz = {
-    nft: {
-      ipfs_id: 'bafkreiap4b7p34iorkv2qtgeen53ehntizzagnkq6ebz5gsaifm36rvhxe'
-    },
-    questions: [{
-      title: 'What animal is that?',
-      options: [{
-        label: 'Frog',
-        anwser: false
-      }, {
-        label: 'Lizard',
-        anwser: true
-      }, {
-        label: 'Salamander',
-        anwser: false
-      }]
-    }, {
-      title: 'Where he lives?',
-      options: [{
-        label: 'Water',
-        anwser: false
-      }, {
-        label: 'Tree',
-        anwser: false
-      }, {
-        label: 'Eye',
-        anwser: true
-      }]
-    }, {
-      title: 'What is your medium life period?',
-      options: [{
-        label: '< 1 year',
-        anwser: false
-      }, {
-        label: '< 10 year',
-        anwser: true
-      }, {
-        label: '< 100 year',
-        anwser: false
-      }]
-    }],
-    rurl: '/reward/abcde123'
-  };
-
-  return new Promise((resolve, reject) => setTimeout(() => resolve(quiz), 1000));
-}
+import colorTween from './functions/colorTween';
+import typewriteText from './functions/typewriteText';
+import { apiGetQuiz } from './functions/mock';
 
 export default class Stage1 extends Phaser.Scene
 {
   constructor ()
   {
-      super('Stage1');
-      this.countTimeHead = 0;
+    super('Stage1');
+  }
+
+  init()
+  {
+    this.countTimeHead = 0;
+    this.label_style = {
+      fontSize: '30px',
+      color: 'black',
+      fontFamily: 'GROBOLD'
+    };
   }
 
   preload ()
   {
-      this.load.image('st1', st1);
-      this.load.image('santa1', santa1);
-      this.load.image('santaface', santaface);
-      this.load.image('door', door);
-      this.load.image('bt_back', bt_back);
+    this.load.image('st1', st1);
+    this.load.image('santa1', santa1);
+    this.load.image('santaface', santaface);
+    this.load.image('door', door);
+    this.load.image('bt_back', bt_back);
   }
 
   create ()
   {
-    const st1 = this.add.image(512, 350, 'st1');
+    this.add.image(512, 350, 'st1');
+    this.add.image(770, 470, 'santa1');
     const door = this.add.image(340, 494, 'door').setTint('0xffff00').setInteractive();
     const bt_back = this.add.image(100, 100, 'bt_back').setInteractive();
-    const santa1 = this.add.image(770, 470, 'santa1');
     this.santaface = this.add.image(773, 420, 'santaface');
     this.santaface.setAngle(-16);
-    this.label = this.add.text(630, 110, '', {
-      fontSize: '30px',
-      color: 'black',
-      fontFamily: 'GROBOLD'
-    }).setWordWrapWidth(300);
-    this.typewriteText('Select one of the magic entrances and click to play! 🎅');
+    const label = this.add.text(630, 110, '', this.label_style).setWordWrapWidth(300);
+    typewriteText(this, label, 'Select one of the magic entrances and click to play! 🎅');
 
     bt_back.on('pointerdown', (pointer) => {
       this.scene.start('SantaAskMe');
     });
 
     door.on('pointerdown', this.onClickDoor.bind(this));
-
-    this.tweens.addCounter({
-      from: 0,
-      to: 100,
-      duration: 1000,
-      ease: Phaser.Math.Easing.Sine.InOut,
-      repeat: -1,
-      yoyo: true,
-      onUpdate: tween => {
-        const value = tween.getValue();
-        const colorObject = Phaser.Display.Color.Interpolate.ColorWithColor(
-          Phaser.Display.Color.ValueToColor('#ffffff'),
-          Phaser.Display.Color.ValueToColor('#33eeee'),
-          100,
-          value
-        );
-        const color = Phaser.Display.Color.GetColor(colorObject.r, colorObject.g, colorObject.b);
-        door.setTint(color);
-      }
-    });
+    colorTween(this, door);
   }
 
   update(time, delta)
@@ -121,24 +62,10 @@ export default class Stage1 extends Phaser.Scene
     }
   }
 
-  typewriteText(text)
-  {
-    const length = text.length;
-    let i = 0;
-    this.time.addEvent({
-        callback: () => {
-            this.label.text += text[i];
-            ++i;
-        },
-        repeat: length - 1,
-        delay: 50
-    });
-  }
-
   async onClickDoor(pointer) {
     const {downX, downY} = pointer;
     if ((downX > 264 && downX < 298) && (downY > 341 && downY < 378)) {
-      this.scene.start('Stage1Inner', { quiz: await apiGetQuiz(0) });
+      this.scene.start('Stage1Inner', { quiz: await apiGetQuiz(1, 0) });
     } else if ((downX > 317 && downX < 365) && (downY > 336 && downY < 385)) {
       alert('port2');
     } else if ((downX > 383 && downX < 417) && (downY > 340 && downY < 377)) {

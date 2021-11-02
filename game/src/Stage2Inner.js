@@ -1,56 +1,67 @@
 import Phaser from 'phaser';
 import sti2 from './assets/sti2.png';
 import bt_sti2 from './assets/bt_sti2.png';
+import { createNextQuestion, updateResponse } from './functions/quiz';
+import countdown from './functions/countdown';
 
 export default class Stage2Inner extends Phaser.Scene
 {
   constructor ()
   {
-      super('Stage2Inner');
+    super('Stage2Inner');
   }
 
-  preload ()
+  init (data)
   {
-      this.load.image('sti2', sti2);
-      this.load.image('bt_sti2', bt_sti2);
-      this.load.image('ipfs', 'https://bafkreia6xk7nzgnzolrci7vln6z5k72j4kpmht4ec7urwe6g2kk3aujcry.ipfs.dweb.link');
-  }
+    this.data = data;
+    this.quiz = data.quiz;
 
-  create ()
-  {
-    const sti = this.add.image(512, 350, 'sti2');
-    const bt_sti_1 = this.add.image(512, 305, 'bt_sti2');
-    const bt_sti_2 = this.add.image(512, 425, 'bt_sti2');
-    const bt_sti_3 = this.add.image(512, 545, 'bt_sti2');
-    const option_style = {
+    this.result = true;
+    this.currentIndex = 0;
+    this.stage = 'sti2';
+    
+    this.question_title_style = {
+      fontSize: '50px',
+      color: 'black',
+      fontFamily: 'GROBOLD'
+    };
+
+    this.option_text_style = {
       fontSize: '25px',
       color: 'white',
       fontFamily: 'GROBOLD'
     };
-    this.add.text(400, 274, 'Bugatti Veyron', option_style).setWordWrapWidth(200);
-    this.add.text(400, 394, 'McLaren Speedtail', option_style).setWordWrapWidth(200);
-    this.add.text(400, 514, 'Saleen S7', option_style).setWordWrapWidth(200);
-
-    this.add.text(110, 110, 'What car is that?', {
-      fontSize: '50px',
-      color: 'black',
-      fontFamily: 'GROBOLD'
-    }).setWordWrapWidth(900);
-
-    const ipfs = this.add.image(190, 500, 'ipfs');
-
-    bt_sti_1.on('pointerdown', (pointer) => {
-      alert('opt1');
-    });
-    bt_sti_2.on('pointerdown', (pointer) => {
-      alert('opt2');
-    });
-    bt_sti_3.on('pointerdown', (pointer) => {
-      alert('opt3');
-    });
   }
 
-  update(time, delta)
+  preload ()
   {
+    this.load.image('sti2', sti2);
+    this.load.image('bt_sti2', bt_sti2);
+    this.load.image(`ipfs${this.quiz.nft.ipfs_id}`, `https://${this.quiz.nft.ipfs_id}.ipfs.dweb.link`);
+  }
+
+  create ()
+  {
+
+    this.add.image(512, 350, 'sti2');
+    this.add.image(190, 500, `ipfs${this.quiz.nft.ipfs_id}`);
+
+    const bt_sti_1 = this.add.image(512, 305, 'bt_sti2').setInteractive();
+    const bt_sti_2 = this.add.image(512, 425, 'bt_sti2').setInteractive();
+    const bt_sti_3 = this.add.image(512, 545, 'bt_sti2').setInteractive();
+
+    countdown(this);
+
+    bt_sti_1.on('pointerdown', (pointer) => {
+      updateResponse(this, 0);
+    });
+    bt_sti_2.on('pointerdown', (pointer) => {
+      updateResponse(this, 1);
+    });
+    bt_sti_3.on('pointerdown', (pointer) => {
+      updateResponse(this, 2);
+    });
+
+    createNextQuestion(this, 0);
   }
 }

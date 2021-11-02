@@ -2,33 +2,40 @@ import Phaser from 'phaser';
 import st2 from './assets/st2.png';
 import door from './assets/doorst2.png';
 import bt_back from './assets/bt_back.png';
+import colorTween from './functions/colorTween';
+import typewriteText from './functions/typewriteText';
+import { apiGetQuiz } from './functions/mock';
 
 export default class Stage2 extends Phaser.Scene
 {
   constructor ()
   {
-      super('Stage2');
+    super('Stage2');
+  }
+
+  init ()
+  {
+    this.label_style = {
+      fontSize: '30px',
+      color: 'black',
+      fontFamily: 'GROBOLD'
+    };
   }
 
   preload ()
   {
-      this.load.image('st2', st2);
-      this.load.image('doorst2', door);
-      this.load.image('bt_back', bt_back);
+    this.load.image('st2', st2);
+    this.load.image('doorst2', door);
+    this.load.image('bt_back', bt_back);
   }
 
   create ()
   {
-    const st2 = this.add.image(512, 350, 'st2');
+    this.add.image(512, 350, 'st2');
     const door = this.add.image(354, 365, 'doorst2').setTint('0xffff00').setInteractive();
     const bt_back = this.add.image(100, 100, 'bt_back').setInteractive();
 
-    this.label = this.add.text(630, 110, '', {
-      fontSize: '30px',
-      color: 'black',
-      fontFamily: 'GROBOLD'
-    }).setWordWrapWidth(300);
-    this.typewriteText('Select one of the magic entrances and click to play! 🎅');
+    const label = this.add.text(630, 110, '', this.label_style).setWordWrapWidth(300);
 
     bt_back.on('pointerdown', (pointer) => {
       this.scene.start('SantaAskMe');
@@ -36,49 +43,15 @@ export default class Stage2 extends Phaser.Scene
 
     door.on('pointerdown', this.onClickDoor.bind(this));
 
-    this.tweens.addCounter({
-      from: 0,
-      to: 100,
-      duration: 1000,
-      ease: Phaser.Math.Easing.Sine.InOut,
-      repeat: -1,
-      yoyo: true,
-      onUpdate: tween => {
-        const value = tween.getValue();
-        const colorObject = Phaser.Display.Color.Interpolate.ColorWithColor(
-          Phaser.Display.Color.ValueToColor('#ffffff'),
-          Phaser.Display.Color.ValueToColor('#eeee33'),
-          100,
-          value
-        );
-        const color = Phaser.Display.Color.GetColor(colorObject.r, colorObject.g, colorObject.b);
-        door.setTint(color);
-      }
-    });
+    typewriteText(this, label, 'Select one of the magic entrances and click to play! 🎅');
+
+    colorTween(this, door, 1000, '#ffffff', '#eeee33');
   }
 
-  update(time, delta)
-  {
-  }
-
-  typewriteText(text)
-  {
-    const length = text.length;
-    let i = 0;
-    this.time.addEvent({
-        callback: () => {
-          this.label.text += text[i];
-          ++i;
-        },
-        repeat: length - 1,
-        delay: 50
-    });
-  }
-  
   async onClickDoor(pointer) {
     const {downX, downY} = pointer;
     if ((downX > 190  && downX < 215 ) && (downY > 203 && downY < 229)) {
-      this.scene.start('Stage2Inner');
+      this.scene.start('Stage2Inner', { quiz: await apiGetQuiz(2, 0) });
     } else if ((downX > 275 && downX < 313) && (downY > 205 && downY < 246)) {
       alert('port2');
     } else if ((downX > 335 && downX < 375) && (downY > 201 && downY < 245)) {
