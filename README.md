@@ -1,10 +1,35 @@
 # Santa Ask Me
 Santa Ask Me is a browser game with Christmas-themed NFT ASA rewards quiz mechanics. 
 The questions are related to the NFT you are trying to earn. 
-Initially NFTs will be objects and animals. 
-The art of NFTs will be 8bpp with 128x128bits resolution, hosted in IPFS. 
-The Maximum Supply amount of each NFT per quiz will be 100. 
+Initially NFTs will be things and animals. 
+The art of NFTs will be 16bpp pixelized with 128x128bits resolution, hosted in IPFS. 
+The total supply amount of each ASA token per quiz will be 100. 
 In the quiz you will need to choose a door that will give you access to the challenge. 
 Each question have 10 seconds timeout to answer. 
 In the end, the asset ID will appear to the player, and after added and clicked on receive, the token will be transferred. 
 To hit and win you will need a mix of knowledge and luck. 
+
+## Setup
+create and update the quizzes on file quizzes.json
+configure the environment variables:
+```
+WALLET_MNEMONIC=
+PURESTAKE_API_KEY=
+ENVIRONMENT=
+```
+`WALLET_MNEMONIC` is the wallet that created the ASAs  
+`PURESTAKE_API_KEY` you can get one at https://developer.purestake.io
+`ENVIRONMENT` should be `mainnet` or `testnet`
+
+## Build the game app
+```
+cd game
+npm i
+npm run build
+```
+
+## Start application
+```
+npm i
+npm start
+```

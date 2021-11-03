@@ -6,7 +6,7 @@ import door from './assets/door.png';
 import bt_back from './assets/bt_back.png';
 import colorTween from './functions/colorTween';
 import typewriteText from './functions/typewriteText';
-import { apiGetQuiz } from './functions/mock';
+import { apiGetQuiz } from './functions/api';
 
 export default class Stage1 extends Phaser.Scene
 {
@@ -67,7 +67,7 @@ export default class Stage1 extends Phaser.Scene
     if ((downX > 264 && downX < 298) && (downY > 341 && downY < 378)) {
       this.scene.start('Stage1Inner', { quiz: await apiGetQuiz(1, 0) });
     } else if ((downX > 317 && downX < 365) && (downY > 336 && downY < 385)) {
-      alert('port2');
+      this.scene.start('Stage1Inner', { quiz: await apiGetQuiz(1, 1) });
     } else if ((downX > 383 && downX < 417) && (downY > 340 && downY < 377)) {
       alert('port3');
     } else if ((downX > 150 && downX < 179) && (downY > 472 && downY < 519)) {

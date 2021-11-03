@@ -4,7 +4,7 @@ import door from './assets/doorst2.png';
 import bt_back from './assets/bt_back.png';
 import colorTween from './functions/colorTween';
 import typewriteText from './functions/typewriteText';
-import { apiGetQuiz } from './functions/mock';
+import { apiGetQuiz } from './functions/api';
 
 export default class Stage2 extends Phaser.Scene
 {
@@ -53,7 +53,7 @@ export default class Stage2 extends Phaser.Scene
     if ((downX > 190  && downX < 215 ) && (downY > 203 && downY < 229)) {
       this.scene.start('Stage2Inner', { quiz: await apiGetQuiz(2, 0) });
     } else if ((downX > 275 && downX < 313) && (downY > 205 && downY < 246)) {
-      alert('port2');
+      this.scene.start('Stage2Inner', { quiz: await apiGetQuiz(2, 1) });
     } else if ((downX > 335 && downX < 375) && (downY > 201 && downY < 245)) {
       alert('port3');
     } else if ((downX > 397 && downX < 434) && (downY > 203 && downY < 246)) {

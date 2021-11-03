@@ -1,0 +1,91 @@
+[{
+  "stage": 1,
+  "quizzes": [{
+    "nft": {
+      "ipfs_id": "bafkreigpvbmhyoviydp5zt2rbgf45p5ea3tzgjfbpkwlcufbavs6njxq5i",
+      "asset_id": 42955502
+    },
+    "questions": [{
+      "title": "What animal is that?",
+      "options": [{
+        "label": "Frog",
+        "anwser": false
+      }, {
+        "label": "Lizard",
+        "anwser": true
+      }, {
+        "label": "Salamander",
+        "anwser": false
+      }]
+    }, {
+      "title": "Where he lives?",
+      "options": [{
+        "label": "Ground",
+        "anwser": false
+      }, {
+        "label": "Tree",
+        "anwser": false
+      }, {
+        "label": "All alternatives",
+        "anwser": true
+      }]
+    }, {
+      "title": "What is your medium life period?",
+      "options": [{
+        "label": "< 1 year",
+        "anwser": false
+      }, {
+        "label": "< 10 year",
+        "anwser": true
+      }, {
+        "label": "< 100 year",
+        "anwser": false
+      }]
+    }]
+  }]
+}, {
+  "stage": 2,
+  "quizzes": [{
+    "nft": {
+      "ipfs_id": "bafkreidwp7ugvtpad72ijl4qbsal7tx4cndtqh4v3o5i6ifq7biqbjuo4a",
+      "asset_id": 42956069
+    },
+    "questions": [{
+      "title": "What car is that?",
+      "options": [{
+        "label": "Bugatti Veyron",
+        "anwser": true
+      }, {
+        "label": "McLaren Speedtail",
+        "anwser": false
+      }, {
+        "label": "Saleen S7",
+        "anwser": false
+      }]
+    }, {
+      "title": "What is the top speed?",
+      "options": [{
+        "label": "~250 mph",
+        "anwser": false
+      }, {
+        "label": "~267 mph",
+        "anwser": true
+      }, {
+        "label": "~298 mph",
+        "anwser": false
+      }]
+    }, {
+      "title": "Assembly country?",
+      "options": [{
+        "label": "England",
+        "anwser": false
+      }, {
+        "label": "United States",
+        "anwser": false
+      }, {
+        "label": "Germany",
+        "anwser": true
+      }]
+    }]
+  }]
+}]
