@@ -41,10 +41,11 @@ class SantaAskMe extends Phaser.Scene
       color: '#ad0500',
       fontFamily: 'GROBOLD'
     }).setVisible(false);
-    const instructions = this.add.text(150, 440, `
-- select a stage
-- answer the questions before time ends
-- if you hit the correctly answer, connect your wallet to earn the NFT
+    const instructions = this.add.text(150, 420, `
+🎅 Santa will drop the NFT if you answer the quiz correctly
+🖼️ select a stage 
+⌚ answer the questions before time ends 
+🔔 if you hit the correctly answer, add the AssetID on your wallet and click to receive the NFT 
     `,
     {
       fontSize: '24px',

@@ -13,7 +13,13 @@ export default class Stage1Finish extends Phaser.Scene
   init (data)
   {
     this.data = data;
-    this.label_style = {
+    this.label_style1 = {
+      fontSize: '40px',
+      color: 'black',
+      fontFamily: 'GROBOLD',
+      align: 'center'
+    };
+    this.label_style2 = {
       fontSize: '50px',
       color: 'black',
       fontFamily: 'GROBOLD',
@@ -35,11 +41,12 @@ export default class Stage1Finish extends Phaser.Scene
   create ()
   {
     this.add.image(512, 350, this.data.stage);
-    const label = this.add.text(200, 180, '', this.label_style).setWordWrapWidth(430);
 
     if (this.data.win) {
-      typewriteText(this, label, `  You win!   \n ⭐⭐⭐\n Click to redeem your reward.`);
+      const label = this.add.text(170, 180, '', this.label_style1).setWordWrapWidth(500);
+      typewriteText(this, label, `  You win!   \n ⭐⭐⭐\n Add AssetID ${this.data.asset_id} on your Wallet and click to redeem your reward.`);
     } else {
+      const label = this.add.text(200, 180, '', this.label_style2).setWordWrapWidth(430);
       typewriteText(this, label, ` You missed!  \n 😢😢😢\n Click to try again.`);
     }
 
@@ -50,7 +57,7 @@ export default class Stage1Finish extends Phaser.Scene
   
       bt_finish.on('pointerdown', (pointer) => {
         if (this.data.win) {
-          location.href = this.data.rurl;
+          alert('Redeem');
         } else {
           this.scene.start('SantaAskMe');
         }

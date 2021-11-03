@@ -4,7 +4,8 @@ export async function apiGetQuiz(stage, num) {
   if (stage === 1) {
     quiz = {
       nft: {
-        ipfs_id: 'bafkreiap4b7p34iorkv2qtgeen53ehntizzagnkq6ebz5gsaifm36rvhxe'
+        ipfs_id: 'bafkreigpvbmhyoviydp5zt2rbgf45p5ea3tzgjfbpkwlcufbavs6njxq5i',
+        asset_id: 12345678
       },
       questions: [{
         title: 'What animal is that?',
@@ -43,12 +44,12 @@ export async function apiGetQuiz(stage, num) {
           anwser: false
         }]
       }],
-      rurl: '/reward/abcde123'
     };
   } else if (stage === 2) {
     quiz = {
       nft: {
-        ipfs_id: 'bafkreia6xk7nzgnzolrci7vln6z5k72j4kpmht4ec7urwe6g2kk3aujcry'
+        ipfs_id: 'bafkreidwp7ugvtpad72ijl4qbsal7tx4cndtqh4v3o5i6ifq7biqbjuo4a',
+        asset_id: 12345678
       },
       questions: [{
         title: 'What car is that?',
@@ -63,7 +64,6 @@ export async function apiGetQuiz(stage, num) {
           anwser: false
         }]
       }],
-      rurl: '/reward/abcde123'
     };
   }
   return new Promise((resolve, reject) => setTimeout(() => resolve(quiz), 1000));

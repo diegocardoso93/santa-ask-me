@@ -12,7 +12,7 @@ export function updateResponse(ctx, idx)
 
 export function createNextQuestion(ctx, idx) {
   if (ctx.currentIndex === ctx.quiz.questions.length) {
-    ctx.scene.start('StageFinish', { win: ctx.result, rurl: ctx.quiz.rurl, stage: ctx.stage });
+    ctx.scene.start('StageFinish', { win: ctx.result, stage: ctx.stage, asset_id: ctx.quiz.nft.asset_id });
     return false;
   }
 
