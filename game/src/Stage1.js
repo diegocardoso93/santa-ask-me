@@ -7,6 +7,7 @@ import bt_back from './assets/bt_back.png';
 import colorTween from './functions/colorTween';
 import typewriteText from './functions/typewriteText';
 import { apiGetQuiz } from './functions/api';
+import { doorCoordinates } from './functions/doorCoordinates';
 
 export default class Stage1 extends Phaser.Scene
 {
@@ -64,44 +65,13 @@ export default class Stage1 extends Phaser.Scene
 
   async onClickDoor(pointer) {
     const {downX, downY} = pointer;
-    if ((downX > 264 && downX < 298) && (downY > 341 && downY < 378)) {
-      this.scene.start('Stage1Inner', { quiz: await apiGetQuiz(1, 0) });
-    } else if ((downX > 317 && downX < 365) && (downY > 336 && downY < 385)) {
-      this.scene.start('Stage1Inner', { quiz: await apiGetQuiz(1, 1) });
-    } else if ((downX > 383 && downX < 417) && (downY > 340 && downY < 377)) {
-      alert('port3');
-    } else if ((downX > 150 && downX < 179) && (downY > 472 && downY < 519)) {
-      alert('port4');
-    } else if ((downX > 215 && downX < 257) && (downY > 459 && downY < 502)) {
-      alert('port5');
-    } else if ((downX > 307 && downX < 379) && (downY > 413 && downY < 504)) {
-      alert('port6');
-    } else if ((downX > 422 && downX < 461) && (downY > 459 && downY < 501)) {
-      alert('port7');
-    } else if ((downX > 499 && downX < 529) && (downY > 473 && downY < 522)) {
-      alert('port8');
-    } else if ((downX > 136 && downX < 167) && (downY > 559 && downY < 596)) {
-      alert('port9');
-    } else if ((downX > 172 && downX < 205) && (downY > 558 && downY < 594)) {
-      alert('port10');
-    } else if ((downX > 218 && downX < 250) && (downY > 528 && downY < 563)) {
-      alert('port11');
-    } else if ((downX > 227 && downX < 250) && (downY > 576 && downY < 603)) {
-      alert('port12');
-    } else if ((downX > 266 && downX < 308) && (downY > 519 && downY < 563)) {
-      alert('port13');
-    } else if ((downX > 293 && downX < 388) && (downY > 542 && downY < 649)) {
-      alert('port14');
-    } else if ((downX > 369 && downX < 412) && (downY > 519 && downY < 564)) {
-      alert('port15');
-    } else if ((downX > 428 && downX < 459) && (downY > 530 && downY < 565)) {
-      alert('port16');
-    } else if ((downX > 427 && downX < 451) && (downY > 579 && downY < 608)) {
-      alert('port17');
-    } else if ((downX > 473 && downX < 507) && (downY > 560 && downY < 597)) {
-      alert('port18');
-    } else if ((downX > 511 && downX < 544) && (downY > 561 && downY < 596)) {
-      alert('port19');
+
+    let idx = 0;
+    for (const lim of doorCoordinates(1)) {
+      if ((downX > lim.x[0] && downX < lim.x[1]) && (downY > lim.y[0] && downY < lim.y[1])) {
+        this.scene.start('Stage1Inner', { quiz: await apiGetQuiz(1, idx) });
+      }
+      idx++;
     }
   }
 }

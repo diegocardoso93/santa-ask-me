@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import sti1 from './assets/sti1.png';
 import bt_finish from './assets/bt_finish.png';
+import bt_back from './assets/bt_back.png';
 import typewriteText from './functions/typewriteText';
 import { apiReedemToken } from './functions/api';
 
@@ -43,18 +44,23 @@ export default class Stage1Finish extends Phaser.Scene
   preload ()
   {
     this.load.image('bt_finish', bt_finish);
+    this.load.image('bt_back', bt_back);
   }
 
   create ()
   {
     this.add.image(512, 350, this.data.stage);
+    const bt_back = this.add.image(100, 100, 'bt_back').setInteractive();
+    bt_back.on('pointerdown', (pointer) => {
+      this.scene.start('SantaAskMe');
+    });
 
     if (this.data.win) {
       const label = this.add.text(170, 170, '', this.label_style1).setWordWrapWidth(500);
-      typewriteText(this, label, `  You win!   \n ⭐⭐⭐\n Add AssetID ${this.data.asset_id} to your Wallet and click to redeem your reward.`);
+      typewriteText(this, label, `     You win!    \n ⭐⭐⭐\n Add AssetID ${this.data.asset_id} to your Wallet and click to redeem your reward.`);
     } else {
       const label = this.add.text(200, 170, '', this.label_style2).setWordWrapWidth(430);
-      typewriteText(this, label, ` You missed!  \n 😢😢😢\n Click to try again.`);
+      typewriteText(this, label, `   You missed!  \n 😢😢😢\n Click to try again.`);
     }
 
     setTimeout(() => {

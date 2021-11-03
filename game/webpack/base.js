@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -22,6 +23,10 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg|xml)$/i,
         use: "file-loader"
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
       }
     ]
   },
@@ -35,6 +40,12 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./index.html"
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        "*.ico",
+        "*/**/*.ttf"
+      ]
     })
   ]
 };

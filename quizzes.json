@@ -42,6 +42,78 @@
         "anwser": false
       }]
     }]
+  }, {
+    "nft": {
+      "ipfs_id": "bafkreifml3mj6g4z4gbxkvrhs3wmp5ebelfl72ktsmurnsmalnydk2k6wm",
+      "asset_id": 123456
+    },
+    "questions": [{
+      "title": "What animal is that?",
+      "options": [{
+        "label": "Antelope",
+        "anwser": false
+      }, {
+        "label": "Bighorn sheep",
+        "anwser": true
+      }, {
+        "label": "African buffalo",
+        "anwser": false
+      }]
+    }, {
+      "title": "how much do you weigh?",
+      "options": [{
+        "label": "< 50 kg",
+        "anwser": false
+      }, {
+        "label": "< 150 kg",
+        "anwser": true
+      }, {
+        "label": "< 850 kg",
+        "anwser": false
+      }]
+    }, {
+      "title": "Horn composition",
+      "options": [{
+        "label": "Iron",
+        "anwser": false
+      }, {
+        "label": "Calcium",
+        "anwser": false
+      }, {
+        "label": "Keratin",
+        "anwser": true
+      }]
+    }]
+  }, {
+    "nft": {
+      "ipfs_id": "bafkreiamycb7k7fc2ejgsphjhdb4cvhvld63b6v6ktmoju4tta4fm3oqai",
+      "asset_id": 123456
+    },
+    "questions": [{
+      "title": "What animal is that?",
+      "options": [{
+        "label": "Seahorse",
+        "anwser": false
+      }, {
+        "label": "Seadragon",
+        "anwser": true
+      }, {
+        "label": "Orange alga",
+        "anwser": false
+      }]
+    }, {
+      "title": "what is your length?",
+      "options": [{
+        "label": "~45cm",
+        "anwser": false
+      }, {
+        "label": "~9cm",
+        "anwser": true
+      }, {
+        "label": "~143cm",
+        "anwser": false
+      }]
+    }]
   }]
 }, {
   "stage": 2,
