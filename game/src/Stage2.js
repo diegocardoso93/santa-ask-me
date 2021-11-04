@@ -45,7 +45,6 @@ export default class Stage2 extends Phaser.Scene
     door.on('pointerdown', this.onClickDoor.bind(this));
 
     typewriteText(this, label, 'Select one of the magic entrances and click to play! 🎅');
-
     colorTween(this, door, 1000, '#ffffff', '#eeee33');
   }
 
