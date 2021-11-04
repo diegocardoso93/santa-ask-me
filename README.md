@@ -21,7 +21,7 @@ PORT=
 ```
 `WALLET_MNEMONIC` is the wallet that created the ASAs  
 `PURESTAKE_API_KEY` you can get one at https://developer.purestake.io  
-`ENVIRONMENT` should be `mainnet` or `testnet`
+`ENVIRONMENT` should be `mainnet` or `testnet`  
 `PORT` eg. 3000
 
 ## Build the game app
@@ -33,4 +33,4 @@ npm run build
 npm i
 npm start
 ```
-<sub>Almost all images are from https://www.freepik.com</sub>
+<sub>Almost all images are from https://www.freepik.com</sub>.

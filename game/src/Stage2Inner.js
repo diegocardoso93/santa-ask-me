@@ -37,7 +37,7 @@ export default class Stage2Inner extends Phaser.Scene
   {
     this.load.image('sti2', sti2);
     this.load.image('bt_sti2', bt_sti2);
-    this.load.image(`ipfs${this.quiz.nft.ipfs_id}`, `https://${this.quiz.nft.ipfs_id}.ipfs.dweb.link`);
+    this.load.image(`ipfs${this.quiz.nft.ipfs_id}`, `https://cloudflare-ipfs.com/ipfs/${this.quiz.nft.ipfs_id}`);
   }
 
   create ()
