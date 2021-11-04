@@ -11,8 +11,8 @@ const app = express();
 
 app.use('/', express.static(__dirname + '/game/dist'));
 
-app.listen(80, () => {
- console.log("Server running on port 80");
+app.listen(443, () => {
+ console.log("Server running on port 443");
 });
 
 app.get("/api/transfer_asset", (req, res, next) => {
