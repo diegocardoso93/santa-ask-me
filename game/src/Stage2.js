@@ -49,7 +49,8 @@ export default class Stage2 extends Phaser.Scene
     colorTween(this, door, 1000, '#ffffff', '#eeee33');
   }
 
-  async onClickDoor(pointer) {
+  async onClickDoor(pointer)
+  {
     const {downX, downY} = pointer;
 
     let idx = 0;

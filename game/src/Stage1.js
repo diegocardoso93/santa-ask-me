@@ -58,12 +58,13 @@ export default class Stage1 extends Phaser.Scene
   {
     this.countTimeHead += delta;
     if (this.countTimeHead > 1500) {
-        this.countTimeHead = 0;
-        this.santaface.setVisible(!this.santaface.visible);
+      this.countTimeHead = 0;
+      this.santaface.setVisible(!this.santaface.visible);
     }
   }
 
-  async onClickDoor(pointer) {
+  async onClickDoor(pointer)
+  {
     const {downX, downY} = pointer;
 
     let idx = 0;

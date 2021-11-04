@@ -42,7 +42,6 @@ export default class Stage2Inner extends Phaser.Scene
 
   create ()
   {
-
     this.add.image(512, 350, 'sti2');
     this.add.image(190, 500, `ipfs${this.quiz.nft.ipfs_id}`);
 

@@ -18,6 +18,20 @@ class SantaAskMe extends Phaser.Scene
     super('SantaAskMe');
   }
 
+  init()
+  {
+    this.title_style = {
+      fontSize: '30px',
+      color: '#ad0500',
+      fontFamily: 'GROBOLD'
+    };
+    this.text_instructions_style = {
+      fontSize: '24px',
+      color: '#000',
+      fontFamily: 'GROBOLD'
+    };
+  }
+
   preload ()
   {
     this.load.image('sc1', sc1);
@@ -36,22 +50,14 @@ class SantaAskMe extends Phaser.Scene
     const st1_small = this.add.image(512, 535, 'st1_small').setInteractive().setVisible(false);
     const st2_small = this.add.image(222, 535, 'st2_small').setInteractive().setVisible(false);
     const bt_back = this.add.image(186, 390, 'bt_back').setInteractive().setVisible(false);
-    const label = this.add.text(250, 380, 'Select a stage', {
-      fontSize: '30px',
-      color: '#ad0500',
-      fontFamily: 'GROBOLD'
-    }).setVisible(false);
+    const label = this.add.text(250, 380, 'Select a stage', this.title_style).setVisible(false);
     const instructions = this.add.text(150, 420, `
 🎅 Santa will drop the NFT if you answer the quiz correctly
 🖼️ select a stage 
 ⌚ answer the questions before time ends 
 🔔 if you hit the correctly answer, add the AssetID on your wallet and click to receive the NFT 
-    `,
-    {
-      fontSize: '24px',
-      color: '#000',
-      fontFamily: 'GROBOLD'
-    }).setVisible(false)
+    `, this.text_instructions_style)
+    .setVisible(false)
     .setWordWrapWidth(500);
 
     bt_play.on('pointerdown', (pointer) => {

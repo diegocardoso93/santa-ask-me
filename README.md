@@ -24,8 +24,6 @@ ENVIRONMENT=
 
 ## Build the game app
 ```
-cd game
-npm i
 npm run build
 ```
 ## Start application
