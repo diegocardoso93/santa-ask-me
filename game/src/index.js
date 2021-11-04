@@ -6,7 +6,7 @@ import st1_small from './assets/st1_small.png';
 import st2_small from './assets/st2_small.png';
 import bt_back from './assets/bt_back.png';
 import Stage1 from './Stage1';
-import Stage2 from './stage2';
+import Stage2 from './Stage2';
 import Stage1Inner from './Stage1Inner';
 import Stage2Inner from './Stage2Inner';
 import StageFinish from './StageFinish';

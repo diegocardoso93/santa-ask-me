@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import sti1 from './assets/sti1.png';
 import bt_finish from './assets/bt_finish.png';
 import bt_back from './assets/bt_back.png';
 import typewriteText from './functions/typewriteText';
