@@ -33,5 +33,5 @@ npm run build
 npm i
 npm start
 ```
-<sub>Almost all images are from https://www.freepik.com</sub>.   
-<sub>Sounds are from https://itch.io packs</sub>.
+<sub>Almost all images are from https://www.freepik.com.</sub>   
+<sub>Sounds are from https://itch.io packs.</sub>

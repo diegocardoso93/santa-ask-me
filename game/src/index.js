@@ -50,8 +50,11 @@ class SantaAskMe extends Phaser.Scene
   {
     this.add.image(512, 350, 'sc1');
 
-    let music = this.sound.add('backmusic');
-    music.play();
+    if (!this.sound.get('backmusic')) {
+        let music = this.sound.add('backmusic');
+        this.sound.pauseOnBlur = false;
+        music.play();
+    }
 
     createSnowflakeEmitter(this);
 

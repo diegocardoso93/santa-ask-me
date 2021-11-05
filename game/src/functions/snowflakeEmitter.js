@@ -8,56 +8,56 @@ export function preloadSnowflakes(ctx) {
 
 export function createSnowflakeEmitter(ctx) {
   const snowflakes = ctx.add.particles('snowflakes');
-  const snowflakes_large = ctx.add.particles('snowflakes_large');
+  const snowflakesLarge = ctx.add.particles('snowflakes_large');
 
   const lineZone = new Phaser.Geom.Line(0, 0, 1024, 2);
   
-  const back_emitter = snowflakes.createEmitter({
+  const backEmitter = snowflakes.createEmitter({
     frames: [0, 1, 2, 3, 4, 5],
     x: 0,
     y: -32,
-    lifespan: 100000,
+    lifespan: 50000,
     gravityY: 0,
     rotate: [0, 40],
     speedY: [20, 100],
-    scale: { min: 0.2, max: 0.6 },
+    scale: {min: 0.2, max: 0.6},
     frequency: 20,
     width: 1024 * 1.5,
     rotate: {min: 0, max: 40},
-    emitZone: { type: 'random', source: lineZone} 
+    emitZone: {type: 'random', source: lineZone} 
   });
 
-  const mid_emitter = snowflakes.createEmitter({
+  const midEmitter = snowflakes.createEmitter({
     frames: [0, 1, 2, 3, 4, 5],
     x: 0,
     y: -32,
-    lifespan: 100000,
+    lifespan: 50000,
     gravityY: 0,
     rotate: [0, 40],
     speedY: [50, 150],
-    scale: { min: 0.8, max: 1.2 },
+    scale: {min: 0.8, max: 1.2},
     frequency: 40,
     width: 1024 * 1.5,
     rotate: {min: 0, max: 40},
-    emitZone: { type: 'random', source: lineZone}
+    emitZone: {type: 'random', source: lineZone}
   });
 
-  const front_emitter = snowflakes_large.createEmitter({
+  const frontEmitter = snowflakesLarge.createEmitter({
     frames: [0, 1, 2, 3, 4, 5],
     x: 0,
     y: -32,
-    lifespan: 100000,
+    lifespan: 50000,
     gravityY: 0,
     rotate: {min: 0, max: 40},
     speedY: [100, 200],
-    scale: { min: 0.5, max: 1 },
+    scale: {min: 0.5, max: 1},
     frequency: 1000,
     width: 1024 * 1.5,
     rotate: {min: 0, max: 40},
-    emitZone: { type: 'random', source: lineZone}
+    emitZone: {type: 'random', source: lineZone}
   });
 
-  back_emitter.start();
-  mid_emitter.start();
-  front_emitter.start();
+  backEmitter.start();
+  midEmitter.start();
+  frontEmitter.start();
 }
