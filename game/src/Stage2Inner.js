@@ -44,6 +44,7 @@ export default class Stage2Inner extends Phaser.Scene
   {
     this.add.image(512, 350, 'sti2');
     this.add.image(190, 500, `ipfs${this.quiz.nft.ipfs_id}`);
+    const clickSound = this.sound.add('click');
 
     const bt_sti_1 = this.add.image(512, 305, 'bt_sti2').setInteractive();
     const bt_sti_2 = this.add.image(512, 425, 'bt_sti2').setInteractive();
@@ -52,12 +53,15 @@ export default class Stage2Inner extends Phaser.Scene
     countdown(this);
 
     bt_sti_1.on('pointerdown', (pointer) => {
+      clickSound.play();
       updateResponse(this, 0);
     });
     bt_sti_2.on('pointerdown', (pointer) => {
+      clickSound.play();
       updateResponse(this, 1);
     });
     bt_sti_3.on('pointerdown', (pointer) => {
+      clickSound.play();
       updateResponse(this, 2);
     });
 

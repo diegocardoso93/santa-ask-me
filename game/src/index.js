@@ -5,12 +5,15 @@ import bt_instructions from './assets/bt_instructions.png';
 import st1_small from './assets/st1_small.png';
 import st2_small from './assets/st2_small.png';
 import bt_back from './assets/bt_back.png';
+import speaker_off from './assets/speaker-off.png';
+import speaker_on from './assets/speaker.png';
 import Stage1 from './Stage1';
 import Stage2 from './Stage2';
 import Stage1Inner from './Stage1Inner';
 import Stage2Inner from './Stage2Inner';
 import StageFinish from './StageFinish';
 import backmusic from './assets/after_all.mp3';
+import clicktone from './assets/click_tone.wav';
 import { createSnowflakeEmitter, preloadSnowflakes } from './functions/snowflakeEmitter';
 
 class SantaAskMe extends Phaser.Scene
@@ -42,19 +45,17 @@ class SantaAskMe extends Phaser.Scene
     this.load.image('st1_small', st1_small);
     this.load.image('st2_small', st2_small);
     this.load.image('bt_back', bt_back);
+    this.load.image('speaker_off', speaker_off);
+    this.load.image('speaker_on', speaker_on);
     this.load.audio('backmusic', backmusic);
+    this.load.audio('click', clicktone);
     preloadSnowflakes(this);
   }
 
   create ()
   {
     this.add.image(512, 350, 'sc1');
-
-    if (!this.sound.get('backmusic')) {
-        let music = this.sound.add('backmusic');
-        this.sound.pauseOnBlur = false;
-        music.play();
-    }
+    const clickSound = this.sound.add('click');
 
     createSnowflakeEmitter(this);
 
@@ -63,6 +64,7 @@ class SantaAskMe extends Phaser.Scene
     const st1_small = this.add.image(512, 535, 'st1_small').setInteractive().setVisible(false);
     const st2_small = this.add.image(222, 535, 'st2_small').setInteractive().setVisible(false);
     const bt_back = this.add.image(186, 390, 'bt_back').setInteractive().setVisible(false);
+    const speaker = this.add.image(882, 130, this.sound.mute ? 'speaker_off' : 'speaker_on').setInteractive();
 
     const label = this.add.text(250, 380, 'Select a stage', this.title_style).setVisible(false);
     const instructions = this.add.text(150, 420, `
@@ -75,6 +77,7 @@ class SantaAskMe extends Phaser.Scene
     .setWordWrapWidth(500);
 
     bt_play.on('pointerdown', (pointer) => {
+      clickSound.play();
       bt_play.setVisible(false);
       bt_instructions.setVisible(false);
       st1_small.setVisible(true);
@@ -84,6 +87,7 @@ class SantaAskMe extends Phaser.Scene
       label.setText('Select a stage');
     });
     bt_instructions.on('pointerdown', (pointer) => {
+      clickSound.play();
       bt_play.setVisible(false);
       bt_instructions.setVisible(false);
       label.setVisible(true);
@@ -92,6 +96,7 @@ class SantaAskMe extends Phaser.Scene
       instructions.setVisible(true);
     });
     bt_back.on('pointerdown', (pointer) => {
+      clickSound.play();
       bt_play.setVisible(true);
       bt_instructions.setVisible(true);
       st1_small.setVisible(false);
@@ -101,11 +106,28 @@ class SantaAskMe extends Phaser.Scene
       instructions.setVisible(false);
     });
     st1_small.on('pointerdown', (pointer) => {
+      clickSound.play();
       this.scene.start('Stage1');
     });
     st2_small.on('pointerdown', (pointer) => {
+      clickSound.play();
       this.scene.start('Stage2');
     });
+    speaker.on('pointerdown', (pointer) => {
+      if (speaker.texture.key === 'speaker_on') {
+        speaker.setTexture('speaker_off');
+        this.sound.mute = true;
+      } else {
+        speaker.setTexture('speaker_on');
+        this.sound.mute = false;
+      }
+    });
+
+    if (!this.sound.get('backmusic')) {
+      let music = this.sound.add('backmusic');
+      this.sound.pauseOnBlur = false;
+      music.play();
+    }
   }
 }
 

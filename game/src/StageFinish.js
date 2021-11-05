@@ -50,7 +50,10 @@ export default class Stage1Finish extends Phaser.Scene
   {
     this.add.image(512, 350, this.data.stage);
     const bt_back = this.add.image(100, 100, 'bt_back').setInteractive();
+    const clickSound = this.sound.add('click');
+
     bt_back.on('pointerdown', (pointer) => {
+      clickSound.play();
       this.scene.start('SantaAskMe');
     });
 
@@ -63,21 +66,22 @@ export default class Stage1Finish extends Phaser.Scene
     }
 
     setTimeout(() => {
-      const bt_finish = this.add.image(392, 470, 'bt_finish').setInteractive();
-      const bt_finish_text = this.add.text(314, 446, '', this.bt_text_style).setText(`${this.data.win ? 'Redeem' : 'Retry'}`);
+      const bt_finish = this.add.image(this.data.win ? 402 : 392, 470, 'bt_finish').setInteractive();
+      const bt_finish_text = this.add.text(314, 446, '', this.bt_text_style).setText(`${this.data.win ? 'Redeem' : ' Retry'}`);
       const label2 = this.add.text(180, 550, '', this.info_style).setWordWrapWidth(500);
 
       bt_finish.on('pointerdown', async (pointer) => {
+        clickSound.play();
         if (this.data.win) {
-          bt_finish.setInteractive(false);
+          bt_finish.disableInteractive();
           bt_finish_text.setText('Loading...');
           label2.setText('');
           const res = await apiReedemToken(this.data.asset_id);
-          bt_finish.setInteractive(true);
+          bt_finish.setInteractive();
 
           if (res.message === 'success') {
             typewriteText(this, label2, `Done! Click to return.`);
-            bt_finish_text.setText('Return');
+            bt_finish_text.setText(' Return');
             this.data.win = null;
           } else {
             typewriteText(this, label2, res.message);

@@ -6,6 +6,7 @@ import colorTween from './functions/colorTween';
 import typewriteText from './functions/typewriteText';
 import { apiGetQuiz } from './functions/api';
 import { doorCoordinates } from './functions/doorCoordinates';
+import { createMagicFlaresEmitter, preloadFlares } from './functions/magicFlaresEmitter';
 
 export default class Stage2 extends Phaser.Scene
 {
@@ -28,17 +29,20 @@ export default class Stage2 extends Phaser.Scene
     this.load.image('st2', st2);
     this.load.image('doorst2', door);
     this.load.image('bt_back', bt_back);
+    preloadFlares(this);
   }
 
   create ()
   {
     this.add.image(512, 350, 'st2');
+    this.clickSound = this.sound.add('click');
     const door = this.add.image(354, 365, 'doorst2').setTint('0xffff00').setInteractive();
     const bt_back = this.add.image(100, 100, 'bt_back').setInteractive();
 
     const label = this.add.text(630, 110, '', this.label_style).setWordWrapWidth(300);
 
     bt_back.on('pointerdown', (pointer) => {
+      this.clickSound.play();
       this.scene.start('SantaAskMe');
     });
 
@@ -46,6 +50,7 @@ export default class Stage2 extends Phaser.Scene
 
     typewriteText(this, label, 'Select one of the magic entrances and click to play! 🎅');
     colorTween(this, door, 1000, '#ffffff', '#eeee33');
+    createMagicFlaresEmitter(this, door, 'doorst2');
   }
 
   async onClickDoor(pointer)
@@ -55,6 +60,7 @@ export default class Stage2 extends Phaser.Scene
     let idx = 0;
     for (const lim of doorCoordinates(2)) {
       if ((downX > lim.x[0] && downX < lim.x[1]) && (downY > lim.y[0] && downY < lim.y[1])) {
+        this.clickSound.play();
         this.scene.start('Stage2Inner', { quiz: await apiGetQuiz(2, idx) });
       }
       idx++;

@@ -503,7 +503,7 @@
     "questions": [{
       "title": "What planet is that?",
       "options": [{
-        "label": "Juppyter",
+        "label": "Jupyter",
         "anwser": true
       }, {
         "label": "Netuno",
@@ -513,28 +513,28 @@
         "anwser": false
       }]
     }, {
-      "title": "What is the top speed?",
+      "title": "How long is 1 year on this planet?",
       "options": [{
-        "label": "~250 mph",
+        "label": "1 year",
         "anwser": false
       }, {
-        "label": "~267 mph",
+        "label": "2 years",
+        "anwser": false
+      }, {
+        "label": "12 years",
         "anwser": true
-      }, {
-        "label": "~298 mph",
-        "anwser": false
       }]
     }, {
-      "title": "Assembly country?",
+      "title": "Composed mostly by",
       "options": [{
-        "label": "England",
-        "anwser": false
-      }, {
-        "label": "United States",
-        "anwser": false
-      }, {
-        "label": "Germany",
+        "label": "Hydrogen",
         "anwser": true
+      }, {
+        "label": "Water",
+        "anwser": false
+      }, {
+        "label": "Helium",
+        "anwser": false
       }]
     }]
   }]

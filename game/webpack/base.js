@@ -29,7 +29,7 @@ module.exports = {
         loader: 'file-loader'
       },
       {
-        test: /\.mp3$/,
+        test: /\.mp3$|\.wav/,
         loader: 'file-loader'
       }
     ]
