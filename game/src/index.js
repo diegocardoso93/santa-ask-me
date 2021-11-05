@@ -10,6 +10,8 @@ import Stage2 from './Stage2';
 import Stage1Inner from './Stage1Inner';
 import Stage2Inner from './Stage2Inner';
 import StageFinish from './StageFinish';
+import backmusic from './assets/after_all.mp3';
+import { createSnowflakeEmitter, preloadSnowflakes } from './functions/snowflakeEmitter';
 
 class SantaAskMe extends Phaser.Scene
 {
@@ -40,16 +42,25 @@ class SantaAskMe extends Phaser.Scene
     this.load.image('st1_small', st1_small);
     this.load.image('st2_small', st2_small);
     this.load.image('bt_back', bt_back);
+    this.load.audio('backmusic', backmusic);
+    preloadSnowflakes(this);
   }
 
   create ()
   {
     this.add.image(512, 350, 'sc1');
+
+    let music = this.sound.add('backmusic');
+    music.play();
+
+    createSnowflakeEmitter(this);
+
     const bt_play = this.add.image(512, 574, 'bt_play').setInteractive();
     const bt_instructions = this.add.image(212, 526, 'bt_instructions').setInteractive();
     const st1_small = this.add.image(512, 535, 'st1_small').setInteractive().setVisible(false);
     const st2_small = this.add.image(222, 535, 'st2_small').setInteractive().setVisible(false);
     const bt_back = this.add.image(186, 390, 'bt_back').setInteractive().setVisible(false);
+
     const label = this.add.text(250, 380, 'Select a stage', this.title_style).setVisible(false);
     const instructions = this.add.text(150, 420, `
 🎅 Santa will drop the NFT if you answer the quiz correctly
