@@ -15,6 +15,7 @@ import StageFinish from './StageFinish';
 import backmusic from './assets/after_all.mp3';
 import clicktone from './assets/click_tone.wav';
 import { createSnowflakeEmitter, preloadSnowflakes } from './functions/snowflakeEmitter';
+import { showLoader } from './functions/loaderControl';
 
 class SantaAskMe extends Phaser.Scene
 {
@@ -39,6 +40,8 @@ class SantaAskMe extends Phaser.Scene
 
   preload ()
   {
+    showLoader(this);
+
     this.load.image('sc1', sc1);
     this.load.image('bt_play', bt_play);
     this.load.image('bt_instructions', bt_instructions);

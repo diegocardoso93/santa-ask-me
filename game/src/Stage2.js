@@ -7,6 +7,7 @@ import typewriteText from './functions/typewriteText';
 import { apiGetQuiz } from './functions/api';
 import { doorCoordinates } from './functions/doorCoordinates';
 import { createMagicFlaresEmitter, preloadFlares } from './functions/magicFlaresEmitter';
+import { showLoader } from './functions/loaderControl';
 
 export default class Stage2 extends Phaser.Scene
 {
@@ -26,6 +27,8 @@ export default class Stage2 extends Phaser.Scene
 
   preload ()
   {
+    showLoader(this);
+
     this.load.image('st2', st2);
     this.load.image('doorst2', door);
     this.load.image('bt_back', bt_back);

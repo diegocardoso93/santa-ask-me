@@ -9,6 +9,7 @@ import typewriteText from './functions/typewriteText';
 import { apiGetQuiz } from './functions/api';
 import { doorCoordinates } from './functions/doorCoordinates';
 import { createMagicFlaresEmitter, preloadFlares } from './functions/magicFlaresEmitter';
+import { showLoader } from './functions/loaderControl';
 
 export default class Stage1 extends Phaser.Scene
 {
@@ -29,6 +30,8 @@ export default class Stage1 extends Phaser.Scene
 
   preload ()
   {
+    showLoader(this);
+
     this.load.image('st1', st1);
     this.load.image('santa1', santa1);
     this.load.image('santaface', santaface);

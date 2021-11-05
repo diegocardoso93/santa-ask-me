@@ -3,6 +3,7 @@ import sti1 from './assets/sti1.png';
 import bt_sti1 from './assets/bt_sti1.png';
 import { createNextQuestion, updateResponse } from './functions/quiz';
 import countdown from './functions/countdown';
+import { showLoader } from './functions/loaderControl';
 
 export default class Stage1Inner extends Phaser.Scene
 {
@@ -35,6 +36,8 @@ export default class Stage1Inner extends Phaser.Scene
 
   preload ()
   {
+    showLoader(this);
+
     this.load.image('sti1', sti1);
     this.load.image('bt_sti1', bt_sti1);
     this.load.image(`ipfs${this.quiz.nft.ipfs_id}`, `https://cloudflare-ipfs.com/ipfs/${this.quiz.nft.ipfs_id}`);
