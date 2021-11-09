@@ -1,6 +1,5 @@
 
-export function updateResponse(ctx, idx)
-{
+export function updateResponse(ctx, idx) {
   ctx.result &= (idx < 0) ? false :
     ctx.currentQuestion.options
       .find(o => o.label === ctx.currentQuestion.options[idx].label)
