@@ -3,7 +3,7 @@
 Santa Ask Me is a browser game with Christmas-themed NFT ASA rewards quiz mechanics. 
 The questions are related to the NFT you are trying to earn. 
 Initially, NFTs will be things and animals. 
-The art of NFTs will be 16bpp pixelized with 128x128bits resolution, hosted on IPFS. 
+The art of NFTs will be 16bpp pixelized with 256x256bits resolution, hosted on IPFS. 
 The total supply amount of each ASA token per quiz will be 100. 
 In the game, you will need to choose a door that will give you access to the challenge. 
 Each question has 10 seconds timeout to answer. 
@@ -34,4 +34,5 @@ npm i
 npm start
 ```
 <sub>Almost all images are from https://www.freepik.com.</sub>   
-<sub>Sounds are from https://itch.io packs.</sub>
+<sub>Sounds are from https://itch.io packs.</sub>   
+⚠ this project is running on TestNet, is not audited and should not be used in a production environment.  

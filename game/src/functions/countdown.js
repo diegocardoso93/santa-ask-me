@@ -1,4 +1,4 @@
-import { createNextQuestion } from "./quiz";
+import { createNextQuestion } from './quiz';
 
 export default function countdown(ctx) {
   const countdown_style = {
@@ -6,6 +6,7 @@ export default function countdown(ctx) {
     color: 'black',
     fontFamily: 'GROBOLD'
   }
+
   ctx.timer = 10;
   const timer_props = {
     delay: 1000,
@@ -13,7 +14,7 @@ export default function countdown(ctx) {
       countdown.setText(`⌚ ${--ctx.timer}`);
       if (ctx.timer < 0) {
         ctx.timer = 10;
-        ctx.currentIndex = ctx.data.quiz.questions.length;
+        ctx.current_question = ctx.data.quiz.questions.length;
         ctx.result = false;
         createNextQuestion(ctx);
       }
@@ -21,8 +22,8 @@ export default function countdown(ctx) {
     loop: true,
     startAt: 0
   };
-  const countdown = ctx.add.text(130, 260, `⌚ ${ctx.timer}`, countdown_style).setWordWrapWidth(300);
 
+  const countdown = ctx.add.text(130, 260, `⌚ ${ctx.timer}`, countdown_style).setWordWrapWidth(300);
   const tx = ctx.time.addEvent(timer_props);
 
   ctx.resetTimer = () => {

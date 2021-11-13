@@ -1,19 +1,20 @@
+import background1 from './assets/background1.png';
+import button_play from './assets/button_play.png';
+import button_instructions from './assets/button_instructions.png';
+import stage1_small from './assets/stage1_small.png';
+import stage2_small from './assets/stage2_small.png';
+import button_back from './assets/button_back.png';
+import speaker_off from './assets/speaker_off.png';
+import speaker_on from './assets/speaker_on.png';
+import background_music from './assets/sound_after_all.mp3';
+import sound_click_tone from './assets/sound_click_tone.wav';
+
 import Phaser from 'phaser';
-import sc1 from './assets/sc1.png';
-import bt_play from './assets/bt_play.png';
-import bt_instructions from './assets/bt_instructions.png';
-import st1_small from './assets/st1_small.png';
-import st2_small from './assets/st2_small.png';
-import bt_back from './assets/bt_back.png';
-import speaker_off from './assets/speaker-off.png';
-import speaker_on from './assets/speaker.png';
 import Stage1 from './Stage1';
 import Stage2 from './Stage2';
 import Stage1Inner from './Stage1Inner';
 import Stage2Inner from './Stage2Inner';
 import StageFinish from './StageFinish';
-import backmusic from './assets/after_all.mp3';
-import clicktone from './assets/click_tone.wav';
 import { createSnowflakeEmitter, preloadSnowflakes } from './functions/snowflakeEmitter';
 import { showLoader } from './functions/loaderControl';
 
@@ -42,31 +43,31 @@ class SantaAskMe extends Phaser.Scene
   {
     showLoader(this);
 
-    this.load.image('sc1', sc1);
-    this.load.image('bt_play', bt_play);
-    this.load.image('bt_instructions', bt_instructions);
-    this.load.image('st1_small', st1_small);
-    this.load.image('st2_small', st2_small);
-    this.load.image('bt_back', bt_back);
+    this.load.image('background1', background1);
+    this.load.image('button_play', button_play);
+    this.load.image('button_instructions', button_instructions);
+    this.load.image('stage1_small', stage1_small);
+    this.load.image('stage2_small', stage2_small);
+    this.load.image('button_back', button_back);
     this.load.image('speaker_off', speaker_off);
     this.load.image('speaker_on', speaker_on);
-    this.load.audio('backmusic', backmusic);
-    this.load.audio('click', clicktone);
+    this.load.audio('background_music', background_music);
+    this.load.audio('sound_click', sound_click_tone);
     preloadSnowflakes(this);
   }
 
   create ()
   {
-    this.add.image(512, 350, 'sc1');
-    const clickSound = this.sound.add('click');
+    this.add.image(512, 350, 'background1');
+    const sound_click = this.sound.add('sound_click');
 
     createSnowflakeEmitter(this);
 
-    const bt_play = this.add.image(512, 574, 'bt_play').setInteractive();
-    const bt_instructions = this.add.image(212, 526, 'bt_instructions').setInteractive();
-    const st1_small = this.add.image(512, 535, 'st1_small').setInteractive().setVisible(false);
-    const st2_small = this.add.image(222, 535, 'st2_small').setInteractive().setVisible(false);
-    const bt_back = this.add.image(186, 390, 'bt_back').setInteractive().setVisible(false);
+    const button_play = this.add.image(512, 574, 'button_play').setInteractive();
+    const button_instructions = this.add.image(212, 526, 'button_instructions').setInteractive();
+    const stage1_small = this.add.image(512, 535, 'stage1_small').setInteractive().setVisible(false);
+    const stage2_small = this.add.image(222, 535, 'stage2_small').setInteractive().setVisible(false);
+    const button_back = this.add.image(186, 390, 'button_back').setInteractive().setVisible(false);
     const speaker = this.add.image(882, 130, this.sound.mute ? 'speaker_off' : 'speaker_on').setInteractive();
 
     const label = this.add.text(250, 380, 'Select a stage', this.title_style).setVisible(false);
@@ -79,43 +80,48 @@ class SantaAskMe extends Phaser.Scene
     .setVisible(false)
     .setWordWrapWidth(500);
 
-    bt_play.on('pointerdown', (pointer) => {
-      clickSound.play();
-      bt_play.setVisible(false);
-      bt_instructions.setVisible(false);
-      st1_small.setVisible(true);
-      st2_small.setVisible(true);
+    button_play.on('pointerdown', (pointer) => {
+      sound_click.play();
+      button_play.setVisible(false);
+      button_instructions.setVisible(false);
+      stage1_small.setVisible(true);
+      stage2_small.setVisible(true);
       label.setVisible(true);
-      bt_back.setVisible(true);
+      button_back.setVisible(true);
       label.setText('Select a stage');
     });
-    bt_instructions.on('pointerdown', (pointer) => {
-      clickSound.play();
-      bt_play.setVisible(false);
-      bt_instructions.setVisible(false);
+
+    button_instructions.on('pointerdown', (pointer) => {
+      sound_click.play();
+      button_play.setVisible(false);
+      button_instructions.setVisible(false);
       label.setVisible(true);
-      bt_back.setVisible(true);
+      button_back.setVisible(true);
       label.setText('Instructions');
       instructions.setVisible(true);
     });
-    bt_back.on('pointerdown', (pointer) => {
-      clickSound.play();
-      bt_play.setVisible(true);
-      bt_instructions.setVisible(true);
-      st1_small.setVisible(false);
-      st2_small.setVisible(false);
+
+    button_back.on('pointerdown', (pointer) => {
+      sound_click.play();
+      button_play.setVisible(true);
+      button_instructions.setVisible(true);
+      stage1_small.setVisible(false);
+      stage2_small.setVisible(false);
       label.setVisible(false);
-      bt_back.setVisible(false);
+      button_back.setVisible(false);
       instructions.setVisible(false);
     });
-    st1_small.on('pointerdown', (pointer) => {
-      clickSound.play();
+
+    stage1_small.on('pointerdown', (pointer) => {
+      sound_click.play();
       this.scene.start('Stage1');
     });
-    st2_small.on('pointerdown', (pointer) => {
-      clickSound.play();
+
+    stage2_small.on('pointerdown', (pointer) => {
+      sound_click.play();
       this.scene.start('Stage2');
     });
+
     speaker.on('pointerdown', (pointer) => {
       if (speaker.texture.key === 'speaker_on') {
         speaker.setTexture('speaker_off');
@@ -126,10 +132,10 @@ class SantaAskMe extends Phaser.Scene
       }
     });
 
-    if (!this.sound.get('backmusic')) {
-      let music = this.sound.add('backmusic');
+    if (!this.sound.get('background_music')) {
+      let background_music = this.sound.add('background_music');
       this.sound.pauseOnBlur = false;
-      music.play();
+      background_music.play();
     }
   }
 }

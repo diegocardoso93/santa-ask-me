@@ -1,4 +1,3 @@
-
 export const doorCoordinates = (stage) => {
   if (stage === 1) {
     return [

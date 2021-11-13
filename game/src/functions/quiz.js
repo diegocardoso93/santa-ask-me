@@ -1,21 +1,20 @@
-
 export function updateResponse(ctx, idx) {
   ctx.result &= (idx < 0) ? false :
     ctx.currentQuestion.options
       .find(o => o.label === ctx.currentQuestion.options[idx].label)
       .anwser;
 
-  ctx.currentIndex++;
-  createNextQuestion(ctx, ctx.currentIndex);
+  ctx.current_question++;
+  createNextQuestion(ctx, ctx.current_question);
 }
 
 export function createNextQuestion(ctx, idx) {
-  if (ctx.currentIndex === ctx.quiz.questions.length) {
+  if (ctx.current_question === ctx.quiz.questions.length) {
     ctx.scene.start('StageFinish', { win: ctx.result, stage: ctx.stage, asset_id: ctx.quiz.nft.asset_id });
     return false;
   }
 
-  const question = ctx.quiz.questions[ctx.currentIndex];
+  const question = ctx.quiz.questions[ctx.current_question];
   ctx.currentQuestion = question;
   ctx.resetTimer();
 

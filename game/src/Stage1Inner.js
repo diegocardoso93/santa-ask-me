@@ -1,6 +1,7 @@
+import stage_inner1 from './assets/stage_inner1.png';
+import button_stage_inner1 from './assets/button_stage_inner1.png';
+
 import Phaser from 'phaser';
-import sti1 from './assets/sti1.png';
-import bt_sti1 from './assets/bt_sti1.png';
 import { createNextQuestion, updateResponse } from './functions/quiz';
 import countdown from './functions/countdown';
 import { showLoader } from './functions/loaderControl';
@@ -18,8 +19,8 @@ export default class Stage1Inner extends Phaser.Scene
     this.quiz = data.quiz;
 
     this.result = true;
-    this.currentIndex = 0;
-    this.stage = 'sti1';
+    this.current_question = 0;
+    this.stage = 'stage_inner1';
 
     this.question_title_style = {
       fontSize: '50px',
@@ -38,33 +39,35 @@ export default class Stage1Inner extends Phaser.Scene
   {
     showLoader(this);
 
-    this.load.image('sti1', sti1);
-    this.load.image('bt_sti1', bt_sti1);
-    this.load.image(`ipfs${this.quiz.nft.ipfs_id}`, `https://cloudflare-ipfs.com/ipfs/${this.quiz.nft.ipfs_id}`);
+    this.load.image('stage_inner1', stage_inner1);
+    this.load.image('button_stage_inner1', button_stage_inner1);
+    this.load.image(`img${this.quiz.nft.img}`, `/src/assets/nfts/${this.quiz.nft.img}.png`);
   }
 
   async create ()
   {
-    this.add.image(512, 350, 'sti1');
-    this.add.image(190, 500, `ipfs${this.quiz.nft.ipfs_id}`);
-    const clickSound = this.sound.add('click');
+    this.add.image(512, 350, 'stage_inner1');
+    this.add.image(190, 500, `img${this.quiz.nft.img}`);
+    const sound_click = this.sound.add('sound_click');
 
-    const bt_sti_1 = this.add.image(512, 305, 'bt_sti1').setInteractive();
-    const bt_sti_2 = this.add.image(512, 425, 'bt_sti1').setInteractive();
-    const bt_sti_3 = this.add.image(512, 545, 'bt_sti1').setInteractive();
+    const button_stage_inner_1 = this.add.image(512, 305, 'button_stage_inner1').setInteractive();
+    const button_stage_inner_2 = this.add.image(512, 425, 'button_stage_inner1').setInteractive();
+    const button_stage_inner_3 = this.add.image(512, 545, 'button_stage_inner1').setInteractive();
 
     countdown(this);
 
-    bt_sti_1.on('pointerdown', (pointer) => {
-      clickSound.play();
+    button_stage_inner_1.on('pointerdown', (pointer) => {
+      sound_click.play();
       updateResponse(this, 0);
     });
-    bt_sti_2.on('pointerdown', (pointer) => {
-      clickSound.play();
+
+    button_stage_inner_2.on('pointerdown', (pointer) => {
+      sound_click.play();
       updateResponse(this, 1);
     });
-    bt_sti_3.on('pointerdown', (pointer) => {
-      clickSound.play();
+
+    button_stage_inner_3.on('pointerdown', (pointer) => {
+      sound_click.play();
       updateResponse(this, 2);
     });
 

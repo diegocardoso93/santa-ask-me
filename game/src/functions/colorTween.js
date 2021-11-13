@@ -1,4 +1,3 @@
-
 export default function colorTween(ctx, target, duration = 1000, colorFrom = '#ffffff', colorTo = '#33eeee') {
   ctx.tweens.addCounter({
     from: 0,

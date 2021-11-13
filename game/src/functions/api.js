@@ -1,4 +1,3 @@
-
 export async function apiGetQuiz(stage, num) {
   const response = await fetch(`/api/quiz?stage=${stage}&num=${num}`)
     .then(r => r.json());

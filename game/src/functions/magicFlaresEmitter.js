@@ -1,4 +1,3 @@
-
 import flares from '../assets/flares.png';
 import flares_behav from '../assets/flares.json';
 
@@ -7,7 +6,6 @@ export function preloadFlares(ctx) {
 }
 
 export function createMagicFlaresEmitter(ctx, object, texture) {
-
   const origin = object.getTopLeft();
   const particles = ctx.add.particles('flares');
 
@@ -22,6 +20,7 @@ export function createMagicFlaresEmitter(ctx, object, texture) {
     blendMode: 'ADD',
     emitZone: {type: 'random', source: {
       getRandomPoint: (vec) => {
+
         do {
           x = Phaser.Math.Between(0, object.width - 1);
           y = Phaser.Math.Between(0, object.height - 1);

@@ -1,6 +1,7 @@
+import button_finish from './assets/button_finish.png';
+import button_back from './assets/button_back.png';
+
 import Phaser from 'phaser';
-import bt_finish from './assets/bt_finish.png';
-import bt_back from './assets/bt_back.png';
 import typewriteText from './functions/typewriteText';
 import { apiReedemToken } from './functions/api';
 
@@ -14,25 +15,29 @@ export default class Stage1Finish extends Phaser.Scene
   init (data)
   {
     this.data = data;
+
     this.label_style1 = {
       fontSize: '40px',
       color: 'black',
       fontFamily: 'GROBOLD',
       align: 'center'
     };
+
     this.label_style2 = {
       fontSize: '50px',
       color: 'black',
       fontFamily: 'GROBOLD',
       align: 'center'
     };
-    this.bt_text_style = {
+
+    this.button_text_style = {
       fontSize: '40px',
       color: 'black',
       fontFamily: 'GROBOLD',
       align: 'center'
     };
-    this.info_style = {
+
+    this.message_style = {
       fontSize: '28px',
       color: 'black',
       fontFamily: 'GROBOLD',
@@ -42,18 +47,18 @@ export default class Stage1Finish extends Phaser.Scene
 
   preload ()
   {
-    this.load.image('bt_finish', bt_finish);
-    this.load.image('bt_back', bt_back);
+    this.load.image('button_finish', button_finish);
+    this.load.image('button_back', button_back);
   }
 
   create ()
   {
     this.add.image(512, 350, this.data.stage);
-    const bt_back = this.add.image(100, 100, 'bt_back').setInteractive();
-    const clickSound = this.sound.add('click');
+    const button_back = this.add.image(100, 100, 'button_back').setInteractive();
+    const sound_click = this.sound.add('sound_click');
 
-    bt_back.on('pointerdown', (pointer) => {
-      clickSound.play();
+    button_back.on('pointerdown', (pointer) => {
+      sound_click.play();
       this.scene.start('SantaAskMe');
     });
 
@@ -66,26 +71,26 @@ export default class Stage1Finish extends Phaser.Scene
     }
 
     setTimeout(() => {
-      const bt_finish = this.add.image(this.data.win ? 402 : 392, 470, 'bt_finish').setInteractive();
-      const bt_finish_text = this.add.text(314, 446, '', this.bt_text_style).setText(`${this.data.win ? 'Redeem' : ' Retry'}`);
-      const label2 = this.add.text(180, 550, '', this.info_style).setWordWrapWidth(500);
+      const button_finish = this.add.image(this.data.win ? 402 : 392, 470, 'button_finish').setInteractive();
+      const button_finish_text = this.add.text(314, 446, '', this.button_text_style).setText(`${this.data.win ? 'Redeem' : ' Retry'}`);
+      const label2 = this.add.text(180, 550, '', this.message_style).setWordWrapWidth(500);
 
-      bt_finish.on('pointerdown', async (pointer) => {
-        clickSound.play();
+      button_finish.on('pointerdown', async (pointer) => {
+        sound_click.play();
         if (this.data.win) {
-          bt_finish.disableInteractive();
-          bt_finish_text.setText('Loading...');
+          button_finish.disableInteractive();
+          button_finish_text.setText('Loading...');
           label2.setText('');
-          const res = await apiReedemToken(this.data.asset_id);
-          bt_finish.setInteractive();
+          const response = await apiReedemToken(this.data.asset_id);
+          button_finish.setInteractive();
 
-          if (res.message === 'success') {
+          if (response.message === 'success') {
             typewriteText(this, label2, `Done! Click to return.`);
-            bt_finish_text.setText(' Return');
+            button_finish_text.setText(' Return');
             this.data.win = null;
           } else {
-            typewriteText(this, label2, res.message);
-            bt_finish_text.setText('Redeem');
+            typewriteText(this, label2, response.message);
+            button_finish_text.setText('Redeem');
           }
         } else {
           this.scene.start('SantaAskMe');

@@ -48,7 +48,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         "*.ico",
-        "*/**/*.ttf"
+        "**/assets/*.ttf",
+        "**/nfts/*.png"
       ]
     })
   ]
