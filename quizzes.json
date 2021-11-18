@@ -456,7 +456,7 @@
   "quizzes": [{
     "nft": {
       "img": "b1",
-      "asset_id": 123456
+      "asset_id": 45806393
     },
     "questions": [{
       "title": "What car is that?",
@@ -498,7 +498,7 @@
   }, {
     "nft": {
       "img": "b2",
-      "asset_id": 123456
+      "asset_id": 45806558
     },
     "questions": [{
       "title": "What planet is that?",
@@ -540,7 +540,7 @@
   }, {
     "nft": {
       "img": "b3",
-      "asset_id": 123456
+      "asset_id": 45806748
     },
     "questions": [{
       "title": "What fruit is that?",
@@ -570,7 +570,7 @@
   }, {
     "nft": {
       "img": "b4",
-      "asset_id": 123456
+      "asset_id": 45807071
     },
     "questions": [{
       "title": "What kind of food is that?",
@@ -600,7 +600,7 @@
   }, {
     "nft": {
       "img": "b5",
-      "asset_id": 123456
+      "asset_id": 45807262
     },
     "questions": [{
       "title": "What kind of vegetable is that?",
@@ -630,7 +630,7 @@
   }, {
     "nft": {
       "img": "b6",
-      "asset_id": 123456
+      "asset_id": 45807443
     },
     "questions": [{
       "title": "What is the chemical formula of that?",
@@ -660,7 +660,7 @@
   }, {
     "nft": {
       "img": "b7",
-      "asset_id": 123456
+      "asset_id": 45807694
     },
     "questions": [{
       "title": "What game is played with this piece?",
@@ -702,7 +702,7 @@
   }, {
     "nft": {
       "img": "b8",
-      "asset_id": 123456
+      "asset_id": 45807815
     },
     "questions": [{
       "title": "What game is played with this card?",
@@ -732,7 +732,7 @@
   }, {
     "nft": {
       "img": "b9",
-      "asset_id": 123456
+      "asset_id": 45807917
     },
     "questions": [{
       "title": "What character is that?",
@@ -762,7 +762,7 @@
   }, {
     "nft": {
       "img": "b10",
-      "asset_id": 123456
+      "asset_id": 45808066
     },
     "questions": [{
       "title": "What character is that?",
@@ -792,7 +792,7 @@
   }, {
     "nft": {
       "img": "b11",
-      "asset_id": 123456
+      "asset_id": 45808248
     },
     "questions": [{
       "title": "What character is that?",
@@ -822,7 +822,7 @@
   }, {
     "nft": {
       "img": "b12",
-      "asset_id": 123456
+      "asset_id": 45808619
     },
     "questions": [{
       "title": "What bike is that?",
@@ -852,7 +852,7 @@
   }, {
     "nft": {
       "img": "b13",
-      "asset_id": 123456
+      "asset_id": 45808738
     },
     "questions": [{
       "title": "What character is that?",
@@ -882,7 +882,7 @@
   }, {
     "nft": {
       "img": "b14",
-      "asset_id": 123456
+      "asset_id": 45808862
     },
     "questions": [{
       "title": "What flower is that?",
@@ -900,7 +900,7 @@
   }, {
     "nft": {
       "img": "b15",
-      "asset_id": 123456
+      "asset_id": 45809047
     },
     "questions": [{
       "title": "What kind of object is that?",
@@ -930,7 +930,7 @@
   }, {
     "nft": {
       "img": "b16",
-      "asset_id": 123456
+      "asset_id": 45809197
     },
     "questions": [{
       "title": "What kind of lens is that",
@@ -960,7 +960,7 @@
   }, {
     "nft": {
       "img": "b17",
-      "asset_id": 123456
+      "asset_id": 45809345
     },
     "questions": [{
       "title": "What kind of car is that",

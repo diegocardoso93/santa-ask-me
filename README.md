@@ -10,6 +10,8 @@ Each question has 10 seconds timeout to answer.
 In the end, the asset ID will appear to the player, and after being added and clicked on receive, the token will be transferred. 
 To hit and win you will need a mix of knowledge and luck. 
 
+⚠ `this project is running on TestNet, is not audited and should not be used in a production environment.`
+
 ## Setup
 Create and update the quizzes on file `quizzes.json`.  
 Configure the environment variables:
@@ -35,4 +37,3 @@ npm start
 ```
 <sub>Almost all images are from https://www.freepik.com.</sub>   
 <sub>Sounds are from https://itch.io packs.</sub>   
-⚠ this project is running on TestNet, is not audited and should not be used in a production environment.  
