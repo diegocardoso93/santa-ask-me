@@ -945,15 +945,15 @@
         "anwser": false
       }]
     }, {
-      "title": "The light beams cross in a",
+      "title": "The light beams go through in a",
       "options": [{
-        "label": "Biconvex",
-        "anwser": true
-      }, {
-        "label": "Biconcave",
+        "label": "Straight line",
         "anwser": false
       }, {
-        "label": "Positive meniscus",
+        "label": "Convergence",
+        "anwser": true
+      }, {
+        "label": "Divergence",
         "anwser": false
       }]
     }]
@@ -972,6 +972,42 @@
         "anwser": false
       }, {
         "label": "Sedan",
+        "anwser": false
+      }]
+    }]
+  }, {
+    "nft": {
+      "img": "b18",
+      "asset_id": 46021275
+    },
+    "questions": [{
+      "title": "What coin is that",
+      "options": [{
+        "label": "Australian digital coin",
+        "anwser": false
+      }, {
+        "label": "ADA",
+        "anwser": false
+      }, {
+        "label": "ALGO",
+        "anwser": true
+      }]
+    }]
+  }, {
+    "nft": {
+      "img": "b19",
+      "asset_id": 46021358
+    },
+    "questions": [{
+      "title": "What coin is that",
+      "options": [{
+        "label": "YLDY",
+        "anwser": true
+      }, {
+        "label": "YPS",
+        "anwser": false
+      }, {
+        "label": "YOXI",
         "anwser": false
       }]
     }]

@@ -12,6 +12,8 @@ To hit and win you will need a mix of knowledge and luck.
 
 ⚠ `this project is running on TestNet, is not audited and should not be used in a production environment.`
 
+You can play at https://santa-ask-me.herokuapp.com/  
+
 ## Setup
 Create and update the quizzes on file `quizzes.json`.  
 Configure the environment variables:
